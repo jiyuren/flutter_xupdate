@@ -28,6 +28,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
@@ -46,9 +47,10 @@ import okhttp3.Request;
 public class OKHttpUpdateHttpService implements IUpdateHttpService {
 
     private boolean mIsPostJson;
+    private Map<String,String> mHeaders = new HashMap<String, String>();
 
     public OKHttpUpdateHttpService(boolean isPostJson) {
-        this(20000, isPostJson);
+        this(20000, isPostJson,new HashMap());
     }
 
     /**
@@ -57,8 +59,9 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
      * @param timeout    请求超时响应时间
      * @param isPostJson 是否使用json
      */
-    public OKHttpUpdateHttpService(int timeout, boolean isPostJson) {
+    public OKHttpUpdateHttpService(int timeout, boolean isPostJson,Map<String,String> headers) {
         mIsPostJson = isPostJson;
+        mHeaders =  headers;
         OkHttpUtils.initClient(new OkHttpClient.Builder()
                 .connectTimeout(timeout, TimeUnit.MILLISECONDS)
                 .readTimeout(timeout, TimeUnit.MILLISECONDS)
@@ -71,6 +74,7 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
         OkHttpUtils.get()
                 .url(url)
                 .params(transform(params))
+                .headers(mHeaders)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -92,12 +96,14 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
         if (mIsPostJson) {
             requestCall = OkHttpUtils.postString()
                     .url(url)
+                    .headers(mHeaders)
                     .content(new Gson().toJson(params))
                     .mediaType(MediaType.parse("application/json; charset=utf-8"))
                     .build();
         } else {
             requestCall = OkHttpUtils.post()
                     .url(url)
+                    .headers(mHeaders)
                     .params(transform(params))
                     .build();
         }

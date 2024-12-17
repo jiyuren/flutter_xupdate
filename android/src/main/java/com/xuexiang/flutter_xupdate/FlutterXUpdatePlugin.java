@@ -103,6 +103,10 @@ public class FlutterXUpdatePlugin implements FlutterPlugin, ActivityAware, Metho
         Boolean enableRetry = (Boolean) map.get("enableRetry");
         String retryContent = (String) map.get("retryContent");
         String retryUrl = (String) map.get("retryUrl");
+        Map<String, String> headers = new HashMap<>();
+        if (map.get("headers") != null) {
+            headers.putAll((Map<String,String>) map.get("headers"));
+        }
 
         XUpdate.get()
                 .debug(debug)
@@ -131,7 +135,7 @@ public class FlutterXUpdatePlugin implements FlutterPlugin, ActivityAware, Metho
                 .param("appKey", mApplication.getPackageName())
                 .setIUpdateDownLoader(new RetryUpdateDownloader(enableRetry, retryContent, retryUrl))
                 //这个必须设置！实现网络请求功能。
-                .setIUpdateHttpService(new OKHttpUpdateHttpService(timeout, isPostJson));
+                .setIUpdateHttpService(new OKHttpUpdateHttpService(timeout, isPostJson, headers));
         if (map.get("params") != null) {
             XUpdate.get().params((Map<String, Object>) map.get("params"));
         }

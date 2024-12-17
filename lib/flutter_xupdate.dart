@@ -53,7 +53,7 @@ class FlutterXUpdate {
 
       ///重试提示弹窗点击后跳转的url
       String retryUrl = '',
-
+      Map<String,String>? headers,
       ///需要设置的公共参数
       Map? params}) async {
     if (Platform.isAndroid) {
@@ -69,6 +69,7 @@ class FlutterXUpdate {
         'retryContent': retryContent,
         'retryUrl': retryUrl,
         'params': params,
+        'headers':headers,
       };
       final Map? resultMap = await _channel.invokeMethod('initXUpdate', map);
       return resultMap;
