@@ -153,14 +153,14 @@ class _MyAppState extends State<MyApp> {
                       child: const Text('默认App更新'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateDefault,
                     ),
                     ElevatedButton(
                       child: const Text('默认App更新 + 支持后台更新'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateSupportBackground,
                     ),
                   ],
@@ -174,21 +174,21 @@ class _MyAppState extends State<MyApp> {
                       child: const Text('调整宽高比'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateRatio,
                     ),
                     ElevatedButton(
                       child: const Text('强制更新'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateForce,
                     ),
                     ElevatedButton(
                       child: const Text('自动模式'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateAutoMode,
                     ),
                   ],
@@ -202,14 +202,14 @@ class _MyAppState extends State<MyApp> {
                       child: const Text('下载时点击取消允许切换下载方式'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: enableChangeDownLoadType,
                     ),
                     ElevatedButton(
                       child: const Text('显示重试提示弹窗'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: showRetryDialogTip,
                     ),
                   ],
@@ -223,14 +223,14 @@ class _MyAppState extends State<MyApp> {
                       child: const Text('使用自定义json解析'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: customJsonParse,
                     ),
                     ElevatedButton(
                       child: const Text('直接传入UpdateEntity进行更新'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: checkUpdateByUpdateEntity,
                     ),
                   ],
@@ -244,14 +244,14 @@ class _MyAppState extends State<MyApp> {
                       child: const Text('自定义更新弹窗样式'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: customPromptDialog,
                     ),
                     ElevatedButton(
                       child: const Text('定时更新'),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).primaryColor)),
+                              Theme.of(context).primaryColorLight)),
                       onPressed: timerUpdateTask,
                     ),
                   ],
